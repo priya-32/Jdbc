@@ -1,4 +1,4 @@
-#### JDBC - JAVA DATABASE CONNECTIVITY
+# JDBC - JAVA DATABASE CONNECTIVITY
 ![image](https://github.com/user-attachments/assets/61ea53de-c51c-4be6-ba48-aa0934641850)
 
 jdbc acts as an interface to connect java to databse , which helps java to fetch data from the database
@@ -52,9 +52,44 @@ There are 3 ways to store the url,username and password
 2) Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/college, "root", "root");
 3) add all these datas in one file and fetch it from there
 
-   ![Screenshot 2024-12-27 122533](https://github.com/user-attachments/assets/744799dc-7f25-4d0b-a5fe-d36804ed2efb)
+  package model;
 
-   ![Screenshot 2024-12-27 112600](https://github.com/user-attachments/assets/832277df-e46a-44fe-b07e-8e773ab60dd8)
+import java.sql.*;
+import java.util.*;
+import java.io.*;
+public class jdbcclass2 {
+	public static void main(String[] main) {
+	try {
+		Properties prop = new Properties();
+		InputStream input = new FileInputStream("src\\DB.Properties");
+		prop.load(input);
+		String driver_name = prop.getProperty("dbDriver_name");
+		String url = prop.getProperty("dbUrl");
+		String u_name = prop.getProperty("dbuser");
+		String password = prop.getProperty("dbpassword");
+		Class.forName(driver_name);
+		Connection connect = DriverManager.getConnection(url,u_name,password);
+		Statement st = connect.createStatement();
+		ResultSet rs = st.executeQuery("select * from department");
+		while(rs.next()) {
+			System.out.println(rs.getInt(1)+" "+rs.getString(2));
+		}
+//		insertion();
+		 
+	}catch(Exception e) {
+		System.out.println(e);
+	}
+//	private void insertion() {
+//		// TODO Auto-generated method stub
+//		
+	}
+
+}
+DB.Properties
+dbDriver_name = com.mysql.cj.jdbc.Driver
+dbUrl = jdbc:mysql://localhost:3306/company
+dbuser = root
+dbpassword = root
 
                               3 layers
                          Model , DAO , Service
