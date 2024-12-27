@@ -51,6 +51,9 @@ There are 3 ways to store the url,username and password
         String password = "root";
 2) Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/college, "root", "root");
 3) add all these datas in one file and fetch it from there
+
+   ![Screenshot 2024-12-27 122533](https://github.com/user-attachments/assets/744799dc-7f25-4d0b-a5fe-d36804ed2efb)
+
    ![Screenshot 2024-12-27 112600](https://github.com/user-attachments/assets/832277df-e46a-44fe-b07e-8e773ab60dd8)
 
                               3 layers
